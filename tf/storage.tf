@@ -6,7 +6,7 @@ resource "oci_objectstorage_bucket" "artifacts_bucket" {
 
 resource "oci_objectstorage_object" "wallet_object" {
   bucket    = oci_objectstorage_bucket.artifacts_bucket.name
-  content   = oci_database_autonomous_database_wallet.adb_wallet.content
+  content   = module.adb.adb_wallet_content_base64
   namespace = data.oci_objectstorage_namespace.objectstorage_namespace.namespace
   object    = "wallet.zip.b64"
 }

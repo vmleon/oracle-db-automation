@@ -24,5 +24,5 @@ variable "project_name" {
 }
 
 variable "instance_shape" {
-  default = "VM.Standard.E4.Flex"
+  type = string
 }

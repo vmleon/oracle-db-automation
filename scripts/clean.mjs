@@ -13,13 +13,6 @@ const projectName = "oradb";
 
 const config = new Configstore(projectName, { projectName });
 
-const profile = config.get("profile");
-const tenancyId = config.get("tenancyId");
-const compartmentId = config.get("compartmentId");
-const namespace = config.get("namespace");
-const regionKey = config.get("regionKey");
-const regionName = config.get("regionName");
-
 // await $`rm -rf ./.artifacts`;
 // console.log(`${chalk.green("Artifacts")} deleted`);
 // await $`rm -rf ./.certs`;

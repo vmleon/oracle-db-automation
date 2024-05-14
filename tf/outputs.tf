@@ -3,6 +3,10 @@ output "deployment" {
 }
 
 output "db_password" {
-  value = random_password.adb_admin_password.result
+  value = module.adb.db_password
   sensitive = true
+}
+
+output "private_ip" {
+  value = module.compute.private_ip
 }
