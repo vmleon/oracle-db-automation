@@ -1,5 +1,5 @@
 module "compute" {
-  source = "./modules/compute"
+  source = "../modules/compute"
 
   project_name= local.project_name
   deploy_id= local.deploy_id
@@ -15,7 +15,7 @@ module "compute" {
 }
 
 module "adb" {
-  source = "./modules/adb"
+  source = "../modules/adb"
 
   project_name= local.project_name
   deploy_id= local.deploy_id

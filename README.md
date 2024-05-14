@@ -32,30 +32,12 @@ Generate the `terraform.tfvars` file:
 npx zx scripts/tfvars.mjs
 ```
 
-Change to the terraform folder:
+Run the commands that `tfvars.mjs` output in yellow one by one.
+
+Come back to the root folder:
 
 ```bash
-cd tf
-```
-
-Terraform init:
-
-```bash
-terraform init
-```
-
-Terraform Apply:
-
-> Auto approve only for demo porpoise. Otherwise, use Terraform `plan`.
-
-```bash
-terraform apply -auto-approve
-```
-
-Come back to the root folder
-
-```bash
-cd ..
+cd ../..
 ```
 
 ## Connect to Database
@@ -99,20 +81,40 @@ To exit **SQLcl**:
 quit
 ```
 
-## Clean up
+To exit the SSH connection with the compute intance:
 
 ```bash
-cd tf
+exit
 ```
+
+## Clean up
+
+Go to the folder of the deployment you selected at the `setenv.mjs`.
+
+> For example, for ADB-S will be:
+>
+> ```bash
+> cd tf/adb-s
+> ```
+
+Run the Terraform destroy:
 
 ```bash
 terraform destroy -auto-approve
 ```
 
+Come back to the root compartment:
+
 ```bash
-cd ..
+cd ../..
 ```
+
+Clean all auxiliary files:
 
 ```bash
 npx zx scripts/clean.mjs
 ```
+
+## Learn more
+
+Read the [NOTES](NOTES.md).

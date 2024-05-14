@@ -10,7 +10,7 @@ import {
   searchCompartmentIdByName,
   getEFlexShapes,
 } from "./lib/oci.mjs";
-import { createSSHKeyPair, createSelfSignedCert } from "./lib/crypto.mjs";
+import { createSSHKeyPair } from "./lib/crypto.mjs";
 
 const shell = process.env.SHELL | "/bin/zsh";
 $.shell = shell;
@@ -34,6 +34,9 @@ await setNamespaceEnv();
 
 await setCompartmentEnv();
 const compartmentId = config.get("compartmentId");
+
+await selectDeployment();
+
 await selectComputeShape();
 await createSSHKeys(projectName);
 
@@ -109,6 +112,23 @@ async function setCompartmentEnv() {
       );
       config.set("compartmentName", compartmentName);
       config.set("compartmentId", compartmentId);
+    });
+}
+
+async function selectDeployment() {
+  const listDeployments = ["adb-s", "exadb-d"];
+
+  await inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "deployment",
+        message: "Select the Deployment",
+        choices: listDeployments,
+      },
+    ])
+    .then((answers) => {
+      config.set("deployment", answers.deployment);
     });
 }
 

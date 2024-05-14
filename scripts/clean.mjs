@@ -13,6 +13,8 @@ const projectName = "oradb";
 
 const config = new Configstore(projectName, { projectName });
 
+const deployment = config.get("deployment");
+
 // await $`rm -rf ./.artifacts`;
 // console.log(`${chalk.green("Artifacts")} deleted`);
 // await $`rm -rf ./.certs`;
@@ -22,9 +24,13 @@ const sshPathParam = path.join(os.homedir(), ".ssh", projectName);
 await $`rm -f ${sshPathParam}*`;
 console.log(`${chalk.green("SSH keys")} deleted`);
 
-const generatedTf = path.join("tf", "generated");
-await $`rm -rf ${generatedTf}/*`;
+const generatedTf = path.join("tf", deployment, "generated");
+await $`rm -rf ${generatedTf}`;
 console.log(`${chalk.green(generatedTf)} folder deleted`);
+
+const tfvars = path.join("tf", deployment, "terraform.tfvars");
+await $`rm -f ${tfvars}`;
+console.log(`${chalk.green(tfvars)} file deleted`);
 
 config.clear();
 console.log(`${chalk.green("Config file")} deleted`);

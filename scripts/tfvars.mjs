@@ -20,12 +20,14 @@ async function generateTFVars() {
   const tenancyId = config.get("tenancyId");
   const regionName = config.get("regionName");
   const compartmentId = config.get("compartmentId");
+  const deployment = config.get("deployment");
   const compartmentName = config.get("compartmentName");
   const publicKeyContent = config.get("publicKeyContent");
   const sshPrivateKeyPath = config.get("privateKeyPath");
   const instanceShape = config.get("instanceShape");
 
-  const tfVarsPath = "tf/terraform.tfvars";
+  const tfFolder = path.join("tf", deployment);
+  const tfVarsPath = path.join(tfFolder, "terraform.tfvars");
 
   const tfvarsTemplate = await fs.readFile(`${tfVarsPath}.mustache`, "utf-8");
 
@@ -40,9 +42,9 @@ async function generateTFVars() {
   });
 
   console.log(
-    `Terraform will deploy resources in ${chalk.green(
-      regionName
-    )} in compartment ${
+    `Terraform will deploy resources for ${chalk.green(
+      deployment
+    )} in ${chalk.green(regionName)} in compartment ${
       compartmentName ? chalk.green(compartmentName) : chalk.green("root")
     }`
   );
@@ -51,7 +53,7 @@ async function generateTFVars() {
 
   console.log(`File ${chalk.green(tfVarsPath)} created`);
 
-  console.log(`1. ${chalk.yellow("cd tf")}`);
+  console.log(`1. ${chalk.yellow("cd " + tfFolder)}`);
   console.log(`2. ${chalk.yellow("terraform init")}`);
   console.log(`3. ${chalk.yellow("terraform apply -auto-approve")}`);
 }
