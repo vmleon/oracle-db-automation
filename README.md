@@ -23,13 +23,13 @@ cd scripts/ && npm install && cd ..
 Answer all the questions from `setenv.mjs` script:
 
 ```bash
-zx scripts/setenv.mjs
+npx zx scripts/setenv.mjs
 ```
 
 Generate the `terraform.tfvars` file:
 
 ```bash
-zx scripts/tfvars.mjs
+npx zx scripts/tfvars.mjs
 ```
 
 Change to the terraform folder:
@@ -58,7 +58,7 @@ Come back to the root folder
 cd ..
 ```
 
-## Connect to Database
+## Connect to Database
 
 Go to the **Menu** > **Identity & Security** > **Bastion**.
 
@@ -99,7 +99,7 @@ To exit **SQLcl**:
 quit
 ```
 
-## Clean up
+## Clean up
 
 ```bash
 cd tf
