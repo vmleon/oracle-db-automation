@@ -2,11 +2,15 @@ output "db_service" {
   value = "${var.project_name}${var.deploy_id}"
 }
 output "db_password" {
-  value = random_password.adb_admin_password.result
+  value     = random_password.adb_admin_password.result
   sensitive = true
 }
 
 output "adb_wallet_content_base64" {
-  value = oci_database_autonomous_database_wallet.adb_wallet.content
+  value     = oci_database_autonomous_database_wallet.adb_wallet.content
   sensitive = true
+}
+
+output "db_versions" {
+  value = data.oci_database_autonomous_db_versions.adb_versions.autonomous_db_versions
 }

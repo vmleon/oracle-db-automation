@@ -115,6 +115,6 @@ Clean all auxiliary files:
 npx zx scripts/clean.mjs
 ```
 
-## Learn more
+## Learn more
 
 Read the [NOTES](NOTES.md).

@@ -3,7 +3,7 @@ output "deployment" {
 }
 
 output "db_password" {
-  value = module.adb.db_password
+  value     = module.adb.db_password
   sensitive = true
 }
 

@@ -10,3 +10,7 @@ module "adb" {
   compartment_ocid = ""
 }
 ```
+
+## Variables
+
+Go to `./variables.tf`.
